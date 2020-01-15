@@ -2,7 +2,7 @@
 
 %define pypi_name wheel
 
-%global python_wheelname %{pypi_name}-%{version}-py2.py3-none-any.whl
+%global python_wheelname %{pypi_name}-%{version}-py.py-none-any.whl
 %global python_wheeldir %{_datadir}/python-wheels
 
 Name:           python-%{pypi_name}
