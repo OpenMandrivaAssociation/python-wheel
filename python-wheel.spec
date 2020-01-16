@@ -48,7 +48,7 @@ python setup.py bdist_wheel
 
 %install
 %if %{without bootstrap}
-%py_install_wheel %{python_wheelname}
+pip%{python3_version} install -I dist/%{1} --root %{buildroot} --strip-file-prefix %{buildroot} --no-deps %{python_wheelname}
 %else
 %py_install
 %endif
