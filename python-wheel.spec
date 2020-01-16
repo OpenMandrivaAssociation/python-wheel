@@ -1,4 +1,4 @@
-%bcond_without	bootstrap
+%bcond_with	bootstrap
 
 %define pypi_name wheel
 
@@ -7,7 +7,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.33.6
-Release:        1
+Release:        2
 Summary:        A built-package format for Python
 Group:          Development/Python
 License:        MIT
