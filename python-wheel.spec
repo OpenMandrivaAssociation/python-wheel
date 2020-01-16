@@ -48,7 +48,7 @@ python setup.py bdist_wheel
 
 %install
 %if %{without bootstrap}
-pip install --root %{buildroot} --no-deps
+pip install --no-index --find-links=/tmp/wheelhouse python_wheelname
 %else
 %py_install
 %endif
