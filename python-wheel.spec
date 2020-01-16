@@ -53,8 +53,12 @@ A Python wheel of wheel to use with virtualenv.
 %py_install
 %endif
 
-ln -s %{buildroot}%{_bindir}/%{pypi_name}{,-%{python_version}}
-ln -s %{pypi_name}-%{python_version} %{buildroot}%{_bindir}/%{pypi_name}-3
+#ln -s %{buildroot}%{_bindir}/%{pypi_name}{,-%{python_version}}
+#ln -s %{pypi_name}-%{python_version} %{buildroot}%{_bindir}/%{pypi_name}-3
+
+mv %{buildroot}%{_bindir}/%{pypi_name}{,-%{python3_version}}
+ln -s %{pypi_name}-%{python3_version} %{buildroot}%{_bindir}/%{pypi_name}-3
+ln -s %{pypi_name}-3 %{buildroot}%{_bindir}/%{pypi_name}
 
 %if %{without bootstrap}
 mkdir -p %{buildroot}%{python_wheeldir}
