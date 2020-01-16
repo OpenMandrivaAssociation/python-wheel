@@ -48,7 +48,7 @@ python setup.py bdist_wheel
 
 %install
 %if %{without bootstrap}
-pip install --root %{buildroot} --no-deps %{python_wheelname}
+pip install --root %{buildroot} --no-deps
 %else
 %py_install
 %endif
