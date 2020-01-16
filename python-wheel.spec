@@ -41,7 +41,7 @@ A Python wheel of wheel to use with virtualenv.
 
 %build
 %if %{without bootstrap}
-%py_build_wheel
+python setup.py bdist_wheel
 %else
 %py_build
 %endif
