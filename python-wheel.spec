@@ -7,7 +7,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.35.1
-Release:        2
+Release:        1
 Summary:        A built-package format for Python
 Group:          Development/Python
 License:        MIT
