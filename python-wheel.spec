@@ -1,4 +1,4 @@
-%bcond_with	bootstrap
+%bcond_without	bootstrap
 
 %define pypi_name wheel
 
