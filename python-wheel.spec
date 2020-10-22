@@ -69,7 +69,6 @@ install -p dist/%{python_wheelname} -t %{buildroot}%{python_wheeldir}
 %endif
 
 %files
-%license LICENSE.txt
 %doc README.rst
 %{_bindir}/%{pypi_name}
 %{_bindir}/%{pypi_name}-3
