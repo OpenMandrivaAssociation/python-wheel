@@ -1,22 +1,22 @@
-%bcond_without	bootstrap
+%bcond_without bootstrap
 
 %define pypi_name wheel
 
 %global python_wheelname %{pypi_name}-%{version}-py.py-none-any.whl
 %global python_wheeldir %{_datadir}/python-wheels
 
-Name:           python-%{pypi_name}
-Version:        0.35.1
-Release:        1
-Summary:        A built-package format for Python
-Group:          Development/Python
-License:        MIT
-URL:            https://bitbucket.org/pypa/wheel
-Source0:        https://files.pythonhosted.org/packages/source/w/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-BuildArch:      noarch
+Name:		python-%{pypi_name}
+Version:	0.35.1
+Release:	2
+Summary:	A built-package format for Python
+Group:		Development/Python
+License:	MIT
+URL:		https://bitbucket.org/pypa/wheel
+Source0:	https://files.pythonhosted.org/packages/source/w/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+BuildArch:	noarch
 
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python3dist(setuptools)
 
 %if %{without bootstrap}
 BuildRequires:	python-pip
@@ -37,30 +37,21 @@ Group:		Development/Python
 A Python wheel of wheel to use with virtualenv.
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version}
 
 %build
-%if %{without bootstrap}
-%py_build_wheel
-%else
 %py_build
-%endif
 
 %install
-%if %{without bootstrap}
-%py_install_wheel %{python_wheelname}
-%else
 %py_install
-%endif
-
-#ln -s %{buildroot}%{_bindir}/%{pypi_name}{,-%{python_version}}
-#ln -s %{pypi_name}-%{python_version} %{buildroot}%{_bindir}/%{pypi_name}-3
 
 mv %{buildroot}%{_bindir}/%{pypi_name}{,-%{python3_version}}
 ln -s %{pypi_name}-%{python3_version} %{buildroot}%{_bindir}/%{pypi_name}-3
 ln -s %{pypi_name}-3 %{buildroot}%{_bindir}/%{pypi_name}
 
 %if %{without bootstrap}
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+%py_build_wheel
 mkdir -p %{buildroot}%{python_wheeldir}
 install -p dist/%{python_wheelname} -t %{buildroot}%{python_wheeldir}
 %endif
