@@ -37,6 +37,7 @@ Group:		Development/Python
 A Python wheel of wheel to use with virtualenv.
 
 %prep
+export LC_ALL=C.utf-8
 %autosetup -n %{pypi_name}-%{version}
 
 %build
