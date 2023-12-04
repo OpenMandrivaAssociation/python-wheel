@@ -6,8 +6,8 @@
 %global python_wheeldir %{_datadir}/python-wheels
 
 Name:		python-%{pypi_name}
-Version:	0.38.4
-Release:	2
+Version:	0.42.0
+Release:	1
 Summary:	A built-package format for Python
 Group:		Development/Python
 License:	MIT
