@@ -6,7 +6,7 @@
 %global python_wheeldir %{_datadir}/python-wheels
 
 Name:		python-%{pypi_name}
-Version:	0.42.0
+Version:	0.44.0
 Release:	1
 Summary:	A built-package format for Python
 Group:		Development/Python
