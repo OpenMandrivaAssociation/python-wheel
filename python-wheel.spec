@@ -1,4 +1,4 @@
-%bcond_without bootstrap
+%bcond_with bootstrap
 
 %define pypi_name wheel
 
@@ -11,16 +11,11 @@ Release:	2
 Summary:	A built-package format for Python
 Group:		Development/Python
 License:	MIT
-URL:		https://bitbucket.org/pypa/wheel
+URL:		https://pypi.org/project/wheel/
 Source0:	https://files.pythonhosted.org/packages/source/w/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:	noarch
 
-BuildRequires:	pkgconfig(python)
-BuildRequires:	python3dist(setuptools)
-
-%if %{without bootstrap}
-BuildRequires:	python-pip
-%endif
+BuildRequires:	python%{pyver}dist(pip)
 
 %description
 A built-package format for Python.
@@ -55,9 +50,6 @@ export PYTHONPATH=%{buildroot}%{python3_sitelib}
 %py_build_wheel
 mkdir -p %{buildroot}%{python_wheeldir}
 install -p dist/%{python_wheelname} -t %{buildroot}%{python_wheeldir}
-%endif
-
-%if %{without bootstrap}
 %endif
 
 %files
