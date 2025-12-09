@@ -1,5 +1,3 @@
-%bcond_with bootstrap
-
 %define pypi_name wheel
 
 %global python_wheelname %{pypi_name}-%{version}-py.py-none-any.whl
@@ -45,24 +43,9 @@ mv %{buildroot}%{_bindir}/%{pypi_name}{,-%{python3_version}}
 ln -s %{pypi_name}-%{python3_version} %{buildroot}%{_bindir}/%{pypi_name}-3
 ln -s %{pypi_name}-3 %{buildroot}%{_bindir}/%{pypi_name}
 
-%if %{without bootstrap}
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
-%py_build_wheel
-mkdir -p %{buildroot}%{python_wheeldir}
-install -p dist/%{python_wheelname} -t %{buildroot}%{python_wheeldir}
-%endif
-
 %files
 %doc README.rst
 %{_bindir}/%{pypi_name}
 %{_bindir}/%{pypi_name}-3
 %{_bindir}/%{pypi_name}-%{python_version}
 %{python_sitelib}/%{pypi_name}*
-
-%if %{without bootstrap}
-%files wheel
-%license LICENSE.txt
-# we own the dir for simplicity
-%dir %{python_wheeldir}/
-%{python_wheeldir}/%{python_wheelname}
-%endif
