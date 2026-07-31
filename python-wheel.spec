@@ -4,8 +4,8 @@
 %global python_wheeldir %{_datadir}/python-wheels
 
 Name:		python-%{pypi_name}
-Version:	0.45.1
-Release:	2
+Version:	0.47.0
+Release:	1
 Summary:	A built-package format for Python
 Group:		Development/Python
 License:	MIT
@@ -31,7 +31,7 @@ A Python wheel of wheel to use with virtualenv.
 
 %prep
 export LC_ALL=C.utf-8
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n wheel-0.47.0
 
 %build
 %py_build
